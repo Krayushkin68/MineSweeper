@@ -1,10 +1,8 @@
-# from PyQt5.QtCore import *
-# from PyQt5.QtGui import *
-# from PyQt5.QtWidgets import *
 from PySide2.QtCore import *
 from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 from random import randint
+
 
 class GameBlock(QLabel):
     def __init__(self, x, y):
@@ -14,7 +12,7 @@ class GameBlock(QLabel):
         self.is_flag = False
         self.setFixedSize(20, 20)
         self.normal_style = u"QWidget {background-color: rgb(199, 199, 199);} " \
-                          u"QWidget:hover {background-color: rgb(150, 150, 150);}"
+                            u"QWidget:hover {background-color: rgb(150, 150, 150);}"
         self.mine_style = u"QWidget {background-color: red;}"
         self.flag_style = u"QWidget {background-color: blue;}"
         self.setStyleSheet(self.normal_style)
@@ -81,7 +79,7 @@ class GameBlock(QLabel):
 class GameField(QWidget):
     def __init__(self, x, y, mines):
         super(GameField, self).__init__()
-        self.setWindowTitle('Сапер епта')
+        self.setWindowTitle('MineSweeper')
         self.grid = QGridLayout(self)
         self.grid.setSpacing(3)
         self.size_x = x
@@ -175,7 +173,7 @@ class GameField(QWidget):
 class StartWindow(QWidget):
     def __init__(self):
         super(StartWindow, self).__init__()
-        self.setWindowTitle('Сапер епта')
+        self.setWindowTitle('MineSweeper')
         self.resize(160, 198)
         self.gridLayout_3 = QGridLayout(self)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
@@ -245,7 +243,6 @@ class StartWindow(QWidget):
         sizePolicy1.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
         self.pushButton.setSizePolicy(sizePolicy1)
         self.gridLayout_3.addWidget(self.pushButton, 1, 0, 1, 1)
-        self.setWindowTitle(QCoreApplication.translate("Form", u"\u0421\u0430\u043f\u0435\u0440", None))
         self.label_2.setText(QCoreApplication.translate("Form", u"\u0445", None))
         self.label.setText(
             QCoreApplication.translate("Form", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u043f\u043e\u043b\u044f:", None))
@@ -257,7 +254,6 @@ class StartWindow(QWidget):
         self.spinBox.setValue(9)
         self.spinBox_2.setValue(9)
         self.spinBox_3.setValue(20)
-        # self.pushButton.clicked().connect(self.start_saper)
         self.connect(self.pushButton, SIGNAL('clicked()'), self, SLOT('start_saper()'))
 
     def start_saper(self):
@@ -273,6 +269,5 @@ class StartWindow(QWidget):
 if __name__ == '__main__':
     app = QApplication([])
     w = StartWindow()
-    # w = GameField(9, 9, 20)
     w.show()
     app.exec_()
